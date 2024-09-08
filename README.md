@@ -30,7 +30,7 @@ This repository provides a framework for training RL agents using popular algori
 
 Clone the repository to your local machine:
 
-git **clone** https://github.com/your-username/reinforcement-learning-control.git
+git **clone** https://github.com/shubhes/reinforcement-learning-control.git
 
 **cd** reinforcement-learning-control
 
