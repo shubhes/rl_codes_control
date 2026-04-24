@@ -1,0 +1,7 @@
+{
+  "name": "baseline-cartpole",
+  "algorithm": "PPO",
+  "env_id": "CartPole-v1",
+  "total_timesteps": 100000,
+  "seed": 42
+}

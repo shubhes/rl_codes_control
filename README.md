@@ -1,98 +1,44 @@
-**Reinforcement Learning for Control Applications**
+# Reinforcement Learning for Control Applications
 
-This repository contains code for implementing Reinforcement Learning (RL) algorithms for control applications. 
-This project aims to develop RL agents that can learn optimal control policies to solve various control tasks in a simulated environment. 
-This README provides an overview of the repository structure, the RL algorithms used, and instructions for running and experimenting with the code.
+This repository is now structured as a **modular RL project** so notebook work, scripts, and reusable training code can evolve independently.
 
-**Table of Contents**
+## Repository Layout
 
-Introduction
+```text
+.
+├── configs/                  # Experiment configuration files (JSON)
+│   └── base.json
+├── scripts/                  # CLI entrypoints
+│   └── run_experiment.py
+├── src/rl_control/           # Reusable Python package
+│   ├── __init__.py
+│   ├── config.py             # Config dataclass + loader
+│   └── training.py           # Experiment runner/orchestration
+├── tests/
+│   └── test_config.py
+├── rl_control.ipynb          # Existing exploratory notebook
+├── rl_control_1.ipynb        # Existing exploratory notebook
+├── pyproject.toml            # Packaging + test configuration
+└── requirements.txt
+```
 
-Installation
+## Quick Start
 
-Usage
-
-RL Algorithms
-
-Results
-
-Contributing
-
-License
-
-**Introduction**
-
-Reinforcement Learning is a type of machine learning where an agent learns to take actions in an environment to maximize a cumulative reward signal. RL can be used in control applications to learn optimal control policies for tasks such as robot navigation, autonomous driving, drone flight, and more.
-
-This repository provides a framework for training RL agents using popular algorithms to solve control tasks in a simulated environment. The code is organized, modular, and extensible, allowing easy experimentation with different RL algorithms and control scenarios.
-
-**Installation**
-
-Clone the repository to your local machine:
-
-git **clone** https://github.com/shubhes/reinforcement-learning-control.git
-
-**cd** reinforcement-learning-control
-
-Create a virtual environment (optional but recommended):
-
-python -m venv venv
-
-Activate the virtual environment:
-
-  **Windows:**
-
-venv\Scripts\activate
-
-  **Linux/Mac:**
-
-source venv/bin/activate
-
-Install the required dependencies:
-
+```bash
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
+pip install -e .
+python scripts/run_experiment.py --config configs/base.json
+```
 
-**Usage**
+## Why this is more modular
 
-The repository contains several main components:
+- **Configuration is externalized** in `configs/*.json`, so experiments can be changed without editing code.
+- **Training orchestration lives in `src/rl_control/`**, making logic reusable from notebooks, scripts, or tests.
+- **Scripts are thin wrappers** that parse args and call package functions.
+- **Tests target package APIs**, enabling safer refactors over time.
 
-**rl_control.ipynb**: Contains RL code for control applications on a custom-made environment.
+## Next recommended step
 
-**rl_control_1.ipynb**: Contains RL code for control applications on a custom-made environment.
-
-**RL Algorithms**
-
-The repository currently supports the following RL algorithms:
-
-Deep Q-Networks (DQN)
-
-Proximal Policy Optimization (PPO)
-
-**Results**
-
-We provide pre-trained models and training logs in the results/ directory. You can use these to reproduce our results or as a starting point for further experimentation.
-
-**Contributing**
-
-Contributions to this project are welcome! If you find any issues, have suggestions, or want to add new features, feel free to open an issue or submit a pull request.
-
-**License**
-
-You are free to use, modify, and distribute the code for both commercial and non-commercial purposes.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Move the concrete DQN/PPO implementation code from the notebooks into `src/rl_control/algorithms/` and keep notebooks focused on visualization and analysis.
