@@ -32,7 +32,7 @@ pip install -e .
 python scripts/run_experiment.py --config configs/base.json
 ```
 
-## Why this is more modular
+## Why this is modular
 
 - **Configuration is externalized** in `configs/*.json`, so experiments can be changed without editing code.
 - **Training orchestration lives in `src/rl_control/`**, making logic reusable from notebooks, scripts, or tests.
