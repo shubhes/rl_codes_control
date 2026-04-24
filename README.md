@@ -1,6 +1,6 @@
 # Reinforcement Learning for Control Applications
 
-This repository is now structured as a **modular RL project** so notebook work, scripts, and reusable training code can evolve independently.
+This repository is structured as a **modular RL project** so notebook work, scripts, and reusable training code can evolve independently.
 
 ## Repository Layout
 
